@@ -37,7 +37,7 @@ class LinkedList {
         }
     }
     toString(){
-        let output = `Total Size ${this.size} \n`;
+        let output = `Total Size ${this.size} \nHEAD \n`;
         let currentNode = this.head;
         let nodeInd = 0;
         while(currentNode){
@@ -46,6 +46,18 @@ class LinkedList {
             nodeInd++;
         }
         return output;
+    }
+    reverse(){
+        let prev = null;
+        let currentNode = this.head;
+        let next = null;
+        while(currentNode){
+            next = currentNode.next;
+            currentNode.next = prev;
+            prev = currentNode;
+            currentNode = next;
+        }
+        this.head = prev;
     }
 }
 class Node {
@@ -61,6 +73,6 @@ const l1 = new LinkedList();
 l1.add(1);
 l1.add(2);
 l1.add(3);
-l1.remove(1);
-l1.remove(0);
+l1.add(4);
+l1.reverse();
 console.log(`${l1}`);
